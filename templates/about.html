@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}About — Earth Masia{% endblock %}
+
+{% block content %}
+
+<!-- ===== ABOUT HEADER ===== -->
+<section class="py-5 text-center bg-light">
+    <div class="container">
+        <h2 class="section-title mb-3">About Earth Masia</h2>
+        <p class="section-subtext">
+            Delivering professional OHS and environmental consulting solutions for a safe, compliant, and sustainable future.
+        </p>
+    </div>
+</section>
+
+<!-- ===== COMPANY OVERVIEW ===== -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-md-6 text-center">
+                <img src="{{ url_for('static', filename='images/team.jpeg') }}" class="img-fluid rounded shadow-lg" alt="Earth Masia Team">
+            </div>
+            <div class="col-md-6">
+                <h3 class="fw-bold mb-3">Who We Are</h3>
+                <p>
+                    Earth Masia (PTY) LTD is a professional consulting firm specializing in Occupational Health & Safety (OHS) and environmental management. 
+                    We empower organizations to minimize risk, ensure legal compliance, and promote a safe, responsible, and sustainable working environment.
+                </p>
+                <a href="mailto:masiathakhani1@gmail.com" class="btn btn-primary mt-3">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MISSION, VISION & VALUES ===== -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h3 class="text-center mb-4 fw-bold">Our Mission, Vision & Values</h3>
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm p-4 service-card">
+                    <h5 class="fw-bold mb-3">Our Mission</h5>
+                    <p class="text-muted">To provide practical, cost-effective safety and environmental expertise that reduces risk, ensures compliance, and drives sustainable operations.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm p-4 service-card">
+                    <h5 class="fw-bold mb-3">Our Vision</h5>
+                    <p class="text-muted">To be the leading provider of reliable OHS and environmental consulting services, recognized for professionalism, integrity, and innovation.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm p-4 service-card">
+                    <h5 class="fw-bold mb-3">Our Values</h5>
+                    <p class="text-muted">Safety, Integrity, Sustainability, Compliance, and Professional Excellence in every project we undertake.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

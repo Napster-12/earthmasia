@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Services — Earth Masia{% endblock %}
+
+{% block content %}
+
+<!-- ===== SERVICES HEADER ===== -->
+<section class="py-5 text-center bg-light">
+    <div class="container">
+        <h2 class="section-title mb-3">Our Services</h2>
+        <p class="section-subtext">
+            Providing comprehensive Occupational Health & Safety and Environmental Consulting solutions for your organization.
+        </p>
+    </div>
+</section>
+
+<!-- ===== OCCUPATIONAL HEALTH & SAFETY (OHS) SERVICES ===== -->
+<section class="py-5">
+    <div class="container">
+        <h3 class="mb-4 fw-bold text-center">Occupational Health & Safety (OHS) Consulting</h3>
+        <div class="row g-4">
+            {% set ohs_services = [
+                {"title": "Legal & Compliance", "desc": "OHS Act compliance audits, Permit to Work systems, Legal registers."},
+                {"title": "Risk Management", "desc": "Baseline, Issue-based & Continuous risk assessments, HIRA, Bowtie methodology."},
+                {"title": "Safety Systems", "desc": "SHERQ system development, ISO 45001 implementation."},
+                {"title": "Site Support", "desc": "Shutdown safety, Contractor management, Safety representatives training."},
+                {"title": "Investigation", "desc": "Incident/accident investigations (Root Cause, ICAM, 5 Why, TapRoot)."},
+                {"title": "Emergency Response", "desc": "Emergency plans, drills, first-aid readiness, evacuation procedures."},
+                {"title": "Documentation", "desc": "SOPs, Safe Work Procedures, Method Statements, Policies."},
+                {"title": "Training", "desc": "Induction, toolbox talks, risk assessment awareness, PPE usage."}
+            ] %}
+            {% for service in ohs_services %}
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm p-4 service-card">
+                    <h5 class="fw-bold mb-3">{{ service.title }}</h5>
+                    <p class="text-muted">{{ service.desc }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== ENVIRONMENTAL CONSULTING SERVICES ===== -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h3 class="mb-4 fw-bold text-center">Environmental Consulting</h3>
+        <div class="row g-4">
+            {% set env_services = [
+                {"title": "Compliance Audits", "desc": "Environmental legal compliance, ISO 14001 audits."},
+                {"title": "Impact Management", "desc": "Environmental Impact Assessments (EIA), EMP implementation."},
+                {"title": "Waste Management", "desc": "Waste handling plans, registers, recycling programs."},
+                {"title": "Pollution Control", "desc": "Air, noise, dust, water pollution monitoring."},
+                {"title": "Biodiversity & Wildlife", "desc": "Inspections for site disturbance, relocation plans."},
+                {"title": "Rehabilitation", "desc": "Land and vegetation restoration plans."},
+                {"title": "Sustainability", "desc": "ESG reporting, Carbon footprint assessments."}
+            ] %}
+            {% for service in env_services %}
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm p-4 service-card">
+                    <h5 class="fw-bold mb-3">{{ service.title }}</h5>
+                    <p class="text-muted">{{ service.desc }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
