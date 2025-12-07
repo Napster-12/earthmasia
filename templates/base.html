@@ -13,7 +13,7 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-  
+
   <style>
     body { font-family: "Times New Roman", serif; margin:0; padding:0; }
 
@@ -45,6 +45,30 @@
 
     /* ===== MAIN CONTENT ===== */
     main { margin-top: 0; padding-top: 0; }
+
+    /* Responsive design for different screen sizes */
+    @media (max-width: 768px) {
+      .construction-navbar .nav-link {
+        font-size: 0.9rem;
+        margin-left: 10px;
+      }
+      .construction-footer {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Ensure images fit and do not overflow */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Adjust navbar padding on smaller screens */
+    @media (max-width: 576px) {
+      .construction-navbar {
+        padding: 10px 0;
+      }
+    }
   </style>
 </head>
 <body>
