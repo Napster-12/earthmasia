@@ -3,235 +3,116 @@
 
 {% block content %}
 
-<style>
-body {
-    font-family: "Times New Roman", serif;
-    font-size: 12pt;
-    line-height: 1.5;
-    margin: 0;
-}
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-/* ===== HERO SECTION ===== */
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    color: white;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+<!-- HOME PAGE CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 
-/* Background video */
-#video-bg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120vw;
-    height: 120vh;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: -2;
-}
-
-/* Dark overlay for readability */
-.video-overlay {
-    position: absolute;
-    top:0; left:0;
-    width:100%; height:100%;
-    background: rgba(0,0,0,0.55);
-    z-index: -1;
-}
-
-/* Hero content */
-.hero-content { z-index: 2; }
-.hero-title { font-size: 3.2rem; font-weight: bold; margin-bottom: 15px; }
-.hero-sub { font-size: 1.3rem; max-width:700px; margin:0 auto; }
-.btn-main {
-    margin-top: 25px; padding: 12px 40px; font-size: 1.2rem;
-    border-radius: 8px; background-color: #DAA520; border:none; color:white;
-    transition: 0.3s;
-}
-.btn-main:hover { background-color: #c99718; }
-
-/* ===== SECTION STYLES ===== */
-.section-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: center;
-}
-.section-subtext {
-    max-width: 750px;
-    margin: 0 auto 40px;
-    color: #555;
-    text-align: center;
-}
-
-/* Features/Services */
-.feature-card {
-    padding: 30px;
-    border-radius: 15px;
-    background: white;
-    text-align: center;
-    transition: 0.3s;
-    height: 100%;
-}
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-}
-.feature-img { height: 70px; margin-bottom: 20px; }
-
-/* CTA Section */
-.cta-section {
-    background: linear-gradient(90deg, #DAA520, #c99718);
-    color: white;
-    padding: 50px 20px;
-    text-align: center;
-    border-radius: 15px;
-}
-.cta-section a {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 40px;
-    font-size: 1.2rem;
-    border-radius: 8px;
-    background-color: white;
-    color: #DAA520;
-    font-weight: bold;
-    text-decoration: none;
-    transition: 0.3s;
-}
-.cta-section a:hover { background-color: #f5f5f5; }
-
-/* Normal rectangular contact buttons */
-.contact-top {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-}
-.contact-bottom {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.contact-top a, .contact-bottom a {
-    display: block;
-    padding: 12px 20px;
-    background-color: #DAA520;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: 0.3s;
-    text-align: center;
-}
-.contact-bottom a.whatsapp { background-color: #25D366; }
-.contact-bottom a.email { background-color: #1D6ED9; }
-.contact-top a:hover, .contact-bottom a:hover {
-    opacity: 0.85;
-    transform: translateY(-2px);
-}
-
-/* Responsive */
-@media(max-width:767px){
-    .hero-title { font-size: 2rem; }
-    .hero-sub { font-size: 1rem; }
-}
-</style>
-
-<!-- ===== HERO SECTION WITH BACKGROUND VIDEO ===== -->
+<!-- ============================
+     HERO SECTION
+=============================== -->
 <section class="hero-section">
     <div id="video-bg"></div>
     <div class="video-overlay"></div>
+
     <div class="hero-content">
         <h1 class="hero-title">Professional OHS & Environmental Consulting</h1>
-        <p class="hero-sub">Empowering organizations with practical, cost-effective safety and sustainability expertise.</p>
+        <p class="hero-sub">
+            Empowering organizations with practical, cost-effective safety and sustainability expertise.
+        </p>
         <a href="{{ url_for('services') }}" class="btn btn-main">View Our Services</a>
     </div>
 </section>
 
-<!-- ===== YOUTUBE BACKGROUND VIDEO LOOP (0-25s) ===== -->
+<!-- ============================
+     YOUTUBE BACKGROUND VIDEO
+=============================== -->
 <script>
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScript = document.getElementsByTagName('script')[0];
-firstScript.parentNode.insertBefore(tag, firstScript);
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScript = document.getElementsByTagName('script')[0];
+    firstScript.parentNode.insertBefore(tag, firstScript);
 
-var player;
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('video-bg', {
-        videoId: 'IjlYXtI2-GU',
-        playerVars: {
-            autoplay: 1,
-            controls: 0,
-            modestbranding: 1,
-            rel: 0,
-            disablekb: 1,
-            playsinline: 1,
-            mute: 1
-        },
-        events: {
-            onReady: function(event){
-                event.target.mute();
-                event.target.playVideo();
-                setInterval(function(){
-                    if(event.target.getCurrentTime() >= 25){
-                        event.target.seekTo(0);
-                    }
-                }, 100);
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('video-bg', {
+            videoId: 'IjlYXtI2-GU',
+            playerVars: {
+                autoplay: 1,
+                controls: 0,
+                modestbranding: 1,
+                rel: 0,
+                disablekb: 1,
+                playsinline: 1,
+                mute: 1
+            },
+            events: {
+                onReady: function(event){
+                    event.target.mute();
+                    event.target.playVideo();
+
+                    setInterval(function(){
+                        if (event.target.getCurrentTime() >= 25) {
+                            event.target.seekTo(0);
+                        }
+                    }, 100);
+                }
             }
-        }
-    });
-}
+        });
+    }
 </script>
 
-<!-- ===== INTRO SECTION ===== -->
+<!-- ============================
+     INTRO SECTION
+=============================== -->
 <section class="py-5 bg-light">
     <div class="container">
         <h2 class="section-title">Why Choose Earth Masia?</h2>
         <p class="section-subtext">
-            We provide expert Occupational Health & Safety (OHS) and Environmental consulting services designed
-            to reduce risk, ensure compliance, and promote sustainable operations for your business.
+            We provide expert Occupational Health & Safety (OHS) and Environmental consulting services
+            designed to reduce risk, ensure compliance, and promote sustainable operations.
         </p>
     </div>
 </section>
 
-<!-- ===== FEATURES / SERVICES ===== -->
+<!-- ============================
+     FEATURES / SERVICES
+=============================== -->
 <section class="py-5 bg-white">
     <div class="container">
         <div class="row g-4 justify-content-center">
 
+            <!-- Feature 1 -->
             <div class="col-md-4">
                 <div class="feature-card shadow-sm">
                     <img src="{{ url_for('static', filename='images/safety-icon.jpeg') }}" class="feature-img" alt="Safety">
                     <h5 class="fw-bold mb-3">Safety & Compliance</h5>
-                    <p class="text-muted">Comprehensive audits, risk assessments, and compliance solutions to keep your workplace safe.</p>
+                    <p class="text-muted">
+                        Comprehensive audits, risk assessments, and compliance solutions to keep your workplace safe.
+                    </p>
                 </div>
             </div>
 
+            <!-- Feature 2 -->
             <div class="col-md-4">
                 <div class="feature-card shadow-sm">
                     <img src="{{ url_for('static', filename='images/environment-icon.png') }}" class="feature-img" alt="Environment">
                     <h5 class="fw-bold mb-3">Environmental Protection</h5>
-                    <p class="text-muted">Environmental impact assessments, permits, and management plans that are practical and compliant.</p>
+                    <p class="text-muted">
+                        Environmental impact assessments, permits, and management plans that are practical and compliant.
+                    </p>
                 </div>
             </div>
 
+            <!-- Feature 3 -->
             <div class="col-md-4">
                 <div class="feature-card shadow-sm">
                     <img src="{{ url_for('static', filename='images/training-icon.jpeg') }}" class="feature-img" alt="Training">
                     <h5 class="fw-bold mb-3">Training & Support</h5>
-                    <p class="text-muted">On-site training and ongoing support to keep your team competent and confident.</p>
+                    <p class="text-muted">
+                        On-site training and ongoing support to keep your team competent and confident.
+                    </p>
                 </div>
             </div>
 
@@ -239,10 +120,13 @@ function onYouTubeIframeAPIReady() {
     </div>
 </section>
 
-<!-- ===== ABOUT SECTION ===== -->
+<!-- ============================
+     ABOUT SECTION
+=============================== -->
 <section class="py-5 bg-light">
     <div class="container">
         <div class="row align-items-center">
+
             <div class="col-md-6 mb-4 mb-md-0">
                 <h2 class="section-title">About Earth Masia</h2>
                 <p class="text-muted">
@@ -250,30 +134,43 @@ function onYouTubeIframeAPIReady() {
                     Our mission is to help businesses operate safely, sustainably, and in full legal compliance
                     while keeping costs predictable and manageable.
                 </p>
+
                 <a href="{{ url_for('about') }}" class="btn btn-main">Learn More</a>
             </div>
+
             <div class="col-md-6 text-center">
-                <img src="{{ url_for('static', filename='images/team.jpeg') }}" class="img-fluid rounded-4 shadow" alt="About Image">
+                <img src="{{ url_for('static', filename='images/team.jpeg') }}"
+                     class="img-fluid rounded-4 shadow"
+                     alt="Team Image">
             </div>
+
         </div>
     </div>
 </section>
 
-<!-- ===== CTA SECTION ===== -->
+<!-- ============================
+     CTA SECTION
+=============================== -->
 <section class="cta-section mt-5">
     <h2>Ready to Improve Your Safety and Environmental Performance?</h2>
     <a href="mailto:masiathakhani1@gmail.com">Get in Touch</a>
 </section>
 
-<!-- ===== CONTACT BUTTONS ===== -->
-<!-- Call Us at Top Right -->
+<!-- ============================
+     FLOATING CONTACT ICONS
+=============================== -->
+<div class="contact-bottom">
+    <a href="https://wa.me/27711437424" target="_blank" class="whatsapp" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
+    <a href="mailto:masiathakhani1@gmail.com" class="email" title="Email">
+        <i class="fas fa-envelope"></i>
+    </a>
 
-<!-- WhatsApp & Email at Bottom Right -->
-<div class="contact-bottom" style="display: flex; gap: 15px; align-items: center;">
-    <a href="https://wa.me/27711437424" target="_blank" class="whatsapp">WhatsApp Us</a>
-    <a href="mailto:masiathakhani1@gmail.com" class="email">Email Us</a>
-    <a href="tel:+27711437424">Call Us</a>
+    <a href="tel:+27711437424" class="call" title="Call">
+        <i class="fas fa-phone"></i>
+    </a>
 </div>
 
 {% endblock %}
